@@ -1,2 +1,2 @@
 # Skript
-Public skripts for the community
+Public skripts that I have made for the Minehut community
