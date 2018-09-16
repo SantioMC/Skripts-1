@@ -1,6 +1,7 @@
 options:
   maincolor = &3
   servername = COOL SERVER
+  permissionprefix = chatutilities
 
 on chat:
   replace all "%%prefix%%" in message with "%colored player's prefix%"
@@ -34,7 +35,7 @@ command /chat [<text>]:
 	usage: /chat <mute|clear|help>
 	trigger:
 		if arg is "mute":
-      if player has permission "chatutilities.mute":
+      if player has permission "{@permissionprefix}.mute":
   			if {gmute} is false:
   				set {gmute} to true
   				broadcast "&r "
@@ -46,15 +47,15 @@ command /chat [<text>]:
   				broadcast "{@maincolor}&l{@servername} &7» &7Chat has been unmuted by {@maincolor}%player%"
   				broadcast "&r "
       else:
-        send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7chatutilities.mute"
+        send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7{@permissionprefix}.mute"
 		else if arg is "clear":
-      if player has permission "chatutilities.clear":
+      if player has permission "{@permissionprefix}.clear":
   			loop 100 times:
   				broadcast "&r "
   			broadcast "{@maincolor}&l{@servername} &7» &7The chat has been cleared by {@maincolor}%player%"
   			broadcast "&r "
       else:
-        send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7chatutilities.clear"
+        send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7{@permissionprefix}.clear"
 		else if arg is "help":
 			message "&r"
 			message "     &c&l{@servername} CHAT MANAGEMENT     "
@@ -98,7 +99,7 @@ command /chat [<text>]:
 
 on chat:
 	if {gmute} is true:
-		if player has permission "chatutilities.chat.bypass":
+		if player has permission "{@permissionprefix}.chat.bypass":
 			message "&cYou bypassed the global chat mute."
 		else:
 			cancel event
