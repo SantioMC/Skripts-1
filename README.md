@@ -4,4 +4,6 @@ ___
 
 Public skripts I have made for the Minehut community
 
-`- Made by iGalaxy`
+⋅⋅* Post skript requests to issues page
+
+⋅⋅* Made by iGalaxy
