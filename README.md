@@ -4,4 +4,4 @@ ___
 
 Public skripts I have made for the Minehut community
 
-`- iGalaxy`
+`- Made by iGalaxy`
