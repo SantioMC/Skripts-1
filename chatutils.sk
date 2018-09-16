@@ -1,0 +1,54 @@
+options:
+  maincolor = &3
+  servername = COOL SERVER
+
+on chat:
+  replace all "%%prefix%%" in message with "%colored player's prefix%"
+  replace all "%%location%%" in message with "&3%player's x-loc% %player's y-loc% %player's z-loc%"
+  replace all "%%loc%%" in message with "&3%player's x-loc% %player's y-loc% %player's z-loc%"
+  replace all "%%position%%" in message with "%player's x-loc% %player's y-loc% %player's z-loc%"
+  replace all "%%pos%%" in message with "&3%player's x-loc% %player's y-loc% %player's z-loc%"
+  replace all "%%playtime%%" in message with "&9%player's online time%&r"
+  replace all "%%smile%%" in message with "&e☺&r"
+  replace all "%%frown%%" in message with "&9☹&r"
+  replace all "%%lenny%%" in message with "&e( ͡° ͜ʖ ͡°)&r"
+  replace all "%%shrug%%" in message with "&e¯\_(ツ)_/¯&r"
+  replace all "%%wave%%" in message with "&e(∗ ･‿･)ﾉ゛&r"
+  replace all "%%dance%%" in message with "&aᕕ( ᐛ )ᕗ&r"
+  replace all "%%x-loc%%" in message with "&3%x-loc of player%&r"
+  replace all "%%y-loc%%" in message with "&3%y-loc of player%&r"
+  replace all "%%z-loc%%" in message with "&3%z-loc of player%&r"
+  replace all "%%heart%%" in message with "&c❤&r"
+  replace all "%%tm%%" in message with "&3™&r"
+  replace all "%%wink%%" in message with "&3(^_-)&r"
+  loop all players:
+    if message does not contain "@%loop-player%":
+      replace all "%loop-player%" in message with "{@maincolor}@%loop-player%&r"
+    else:
+      replace all "@%loop-player%" in message with "{@maincolor}@%loop-player%&r"
+    if message contains "%loop-player%":
+      make console execute command "execute %loop-player% ~ ~ ~ /playsound block.note.pling master @s ~ ~ ~ 1 1 0.9"
+      set action bar of loop-player to "{@maincolor}%player% mentioned you"
+
+
+
+command /chatutil:
+	trigger:
+		message "&r "
+		message "     {@maincolor}&l{@servername} CHAT UTILITIES     "
+		message "&r "
+		message "{@maincolor}%%prefix%%&7: Your Prefix"
+		message "{@maincolor}%%loc%% &7OR &3%%position%% &7OR &3%%location%%&7: Your Coordinates"
+		message "{@maincolor}%%x-loc%%&7: Your X Coordinate"
+		message "{@maincolor}%%y-loc%%&7: Your Y Coordinate"
+		message "{@maincolor}%%z-loc%%&7: Your Z Coordinate"
+		message "{@maincolor}%%playtime%%&7: Your Current Session Playtime"
+		message "{@maincolor}%%smile%%&7: ☺"
+		message "{@maincolor}%%frown%%&7: ☹"
+		message "{@maincolor}%%wink%%&7: (^_-)"
+		message "{@maincolor}%%shrug%%&7: ¯\_(ツ)_/¯"
+		message "{@maincolor}%%lenny%%&7: ( ͡° ͜ʖ ͡°)"
+		message "{@maincolor}%%wave%%&7: (∗ ･‿･)ﾉ゛"
+		message "{@maincolor}%%dance%%&7: ᕕ( ᐛ )ᕗ"
+		message "{@maincolor}%%heart%%&7: ❤"
+		message "{@maincolor}%%tm%%&7 OR &3%%trademark%%&7: ™"
