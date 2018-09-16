@@ -4,6 +4,10 @@ options:
   permissionprefix = chatutilities
 
 on chat:
+  if {chatcolor::%player's uuid%} is set:
+    set message to "%{chatcolor:%player's uuid%}%%message%"
+  else:
+    set {chatcolor::%player's uuid%} to "&r"
   replace all "%%prefix%%" in message with "%colored player's prefix%"
   replace all "%%location%%" in message with "&3%player's x-loc% %player's y-loc% %player's z-loc%"
   replace all "%%loc%%" in message with "&3%player's x-loc% %player's y-loc% %player's z-loc%"
@@ -24,17 +28,17 @@ on chat:
   replace all "%%wink%%" in message with "&3(^_-)&r"
   loop all players:
     if message does not contain "@%loop-player%":
-      replace all "%loop-player%" in message with "{@maincolor}@%loop-player%&r"
+      replace all "%loop-player%" in message with "{@maincolor}@%loop-player%%{chatcolor:%player's uuid%}%"
     else:
-      replace all "@%loop-player%" in message with "{@maincolor}@%loop-player%&r"
+      replace all "@%loop-player%" in message with "{@maincolor}@%loop-player%%{chatcolor:%player's uuid%}%"
     if message contains "%loop-player%":
       make console execute command "execute %loop-player% ~ ~ ~ /playsound block.note.pling master @s ~ ~ ~ 1 1 0.9"
       set action bar of loop-player to "{@maincolor}%player% mentioned you"
 
-command /chat [<text>]:
-	usage: /chat <mute|clear|help>
+command /chat [<text>] [<text>]:
+	usage: /chat <mute|clear|help|util|color> <color code (if needed)>
 	trigger:
-		if arg is "mute":
+		if arg-1 is "mute":
       if player has permission "{@permissionprefix}.mute":
   			if {gmute} is false:
   				set {gmute} to true
@@ -48,7 +52,7 @@ command /chat [<text>]:
   				broadcast "&r "
       else:
         send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7{@permissionprefix}.mute"
-		else if arg is "clear":
+		else if arg-1 is "clear":
       if player has permission "{@permissionprefix}.clear":
   			loop 100 times:
   				broadcast "&r "
@@ -56,14 +60,14 @@ command /chat [<text>]:
   			broadcast "&r "
       else:
         send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7{@permissionprefix}.clear"
-		else if arg is "help":
+		else if arg-1 is "help":
 			message "&r"
 			message "     &c&l{@servername} CHAT MANAGEMENT     "
 			message "&r"
 			message "&c/chat mute: &7Mutes the chat"
 			message "&c/chat clear: &7Clears the chat"
       message "&c/chat util: &7Displays chat utilities"
-    else if arg is "util":
+    else if arg-1 is "util":
       message "&r "
   		message "     {@maincolor}&l{@servername} CHAT UTILITIES     "
   		message "&r "
@@ -82,7 +86,45 @@ command /chat [<text>]:
   		message "{@maincolor}%%dance%%&7: ᕕ( ᐛ )ᕗ"
   		message "{@maincolor}%%heart%%&7: ❤"
   		message "{@maincolor}%%tm%%&7 OR &3%%trademark%%&7: ™"
-		else if arg is not set:
+    else if arg-1 is "color":
+      if player has permission "{@permissionprefix}.color":
+        if arg-2 is "&1":
+          set {chatcolor::%player's uuid%} to "&1"
+        else if arg-2 is "&2":
+          set {chatcolor::%player's uuid%} to "&2"
+        else if arg-2 is "&3":
+          set {chatcolor::%player's uuid%} to "&3"
+        else if arg-2 is "&4":
+          set {chatcolor::%player's uuid%} to "&4"
+        else if arg-2 is "&5":
+          set {chatcolor::%player's uuid%} to "&5"
+        else if arg-2 is "&6":
+          set {chatcolor::%player's uuid%} to "&6"
+        else if arg-2 is "&7":
+          set {chatcolor::%player's uuid%} to "&7"
+        else if arg-2 is "&8":
+          set {chatcolor::%player's uuid%} to "&8"
+        else if arg-2 is "&9":
+          set {chatcolor::%player's uuid%} to "&9"
+        else if arg-2 is "&c":
+          set {chatcolor::%player's uuid%} to "&c"
+        else if arg-2 is "&f":
+          set {chatcolor::%player's uuid%} to "&f"
+        else if arg-2 is "&e":
+          set {chatcolor::%player's uuid%} to "&e"
+        else if arg-2 is "&a":
+          set {chatcolor::%player's uuid%} to "&a"
+        else if arg-2 is "&b":
+          set {chatcolor::%player's uuid%} to "&b"
+        else if arg-2 is "&0":
+          set {chatcolor::%player's uuid%} to "&0"
+        else if arg-2 is "&d":
+          set {chatcolor::%player's uuid%} to "&d"
+        else:
+          send "&cThat is not a valid color code!"
+      else:
+        send "{@maincolor}&l{@servername} &7» {@maincolor}Required permission: &7{@permissionprefix}.color"
+		else if arg-1 is not set:
 			message "&r"
 			message "     &c&l{@servername} CHAT MANAGEMENT     "
 			message "&r"
