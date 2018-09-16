@@ -6,7 +6,7 @@ on load:
   newShopItem(iron_sword, 50) #newShopItem(Itemstack, Price)
 
 function shop(p: player, s: integer):
-  open virtual chest inventory with size {_s} to {_p}
+  open virtual chest inventory with size {_s} named "&lSHOP" to {_p}
   set {_slot} to 0
   if size of {shopitems::*} > {_s}:
     broadcast "&cUnable to open shop: Not enough slots!"
