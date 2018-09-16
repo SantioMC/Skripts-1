@@ -1,0 +1,27 @@
+#WARNING: THIS SKRIPT IS UNTESTED, AND MAY NOT FUNCTION PROPERLY. PLEASE REPORT ANY BUGS!
+
+on load:
+  loop {shopitems::*}:
+    delete loop-value
+  newShopItem(iron_sword, 50) #newShopItem(Itemstack, Price)
+
+function shop(p: player, s: integer):
+  open virtual chest inventory with size {_s} to {_p}
+  set {_slot} to 0
+  if size of {shopitems::*} > {_s}:
+    broadcast "&cUnable to open shop: Not enough slots!"
+  else:
+    loop {shopitems::*}
+      format a gui slot {_slot} of {_p} with loop-value to run function buyItem(loop-value, line 1 of lore of loop-value, {_p})
+      add 1 to {_slot}
+
+function buyItem(i: item, pr: string, p: player):
+  replace all "&2$" in {_pr} with ""
+  set line 1 of lore of {_i} to "&r"
+  if {_p}'s balance >= {_pr}:
+    remove {_pr} from {_p}'s balance
+    give {_p} 1 of {_i}
+
+function newShopItem(i: item, pr: number):
+  set line 1 of lore of {_i} to "&2$%{_pr}%"
+  add {_i} to {shopitems::*}
