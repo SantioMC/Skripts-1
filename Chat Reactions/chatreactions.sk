@@ -1,1 +1,208 @@
+#Chat Reaction by BluePsychoRanger
 
+
+options:
+	mode: "both" #enabled modes (type, unscramble, or both)
+
+	randomString: false #uses random strings of words (forces "type" mode)
+	# if you want it case sensitive, enable it in the SKRIPT config
+	stringMin: 5 #random string minimum character length
+	stringMax: 10 #random string maximum character length (cannot exceed 25)
+	caseSensitive: true #only affects the display of random strings, if not enabled in SKRIPT config, answering will not be case sensitive
+
+	timeInt: 5 minutes #time between each reaction
+	timeout: 30 seconds #time players have to answer
+
+	reward: give 1 gold nugget to {_reaction.winner} #skript event to trigger when player wins (use {_reaction.winner} to target winner)
+
+
+
+variables:
+	{reaction.type} = 0
+	{reaction.chat} = false
+	# words to be used (if the option "randomString" is true, this is ignored)
+	{reaction.word::1} = "reaction"
+	{reaction.word::2} = "minecraft"
+	# add more words like the example (supports up to 25 characters per word)
+
+
+
+every {@timeInt}:
+	set {reaction.type} to random integer between 0 and 1
+	if {@mode} is "type":
+		set {reaction.type} to 0
+	else if {@mode} is "unscramble":
+		set {reaction.type} to 1
+	if {@randomString} is true:
+		set {reaction.type} to 0
+	if {@randomString} is false:
+		set {reaction.activeWord} to random element of {reaction.word::*}
+	set {reaction.chat} to true
+	if {reaction.type} is 0:
+
+		if {@randomString} is true:
+			set {_length} to random integer between {@stringMin} and {@stringMax}
+			loop {_length} times:
+				set {_num} to loop-number
+				if {@caseSensitive} is true:
+					set {_randInt} to random integer between 1 and 52
+				else:
+					set {_randInt} to random integer between 1 and 26
+				if {_randInt} is 1:
+					set {_char.%{_num}%} to "a"
+				else if {_randInt} is 2:
+					set {_char.%{_num}%} to "b"
+				else if {_randInt} is 3:
+					set {_char.%{_num}%} to "c"
+				else if {_randInt} is 4:
+					set {_char.%{_num}%} to "d"
+				else if {_randInt} is 5:
+					set {_char.%{_num}%} to "e"
+				else if {_randInt} is 6:
+					set {_char.%{_num}%} to "f"
+				else if {_randInt} is 7:
+					set {_char.%{_num}%} to "g"
+				else if {_randInt} is 8:
+					set {_char.%{_num}%} to "h"
+				else if {_randInt} is 9:
+					set {_char.%{_num}%} to "i"
+				else if {_randInt} is 10:
+					set {_char.%{_num}%} to "j"
+				else if {_randInt} is 11:
+					set {_char.%{_num}%} to "k"
+				else if {_randInt} is 12:
+					set {_char.%{_num}%} to "l"
+				else if {_randInt} is 13:
+					set {_char.%{_num}%} to "m"
+				else if {_randInt} is 14:
+					set {_char.%{_num}%} to "n"
+				else if {_randInt} is 15:
+					set {_char.%{_num}%} to "o"
+				else if {_randInt} is 16:
+					set {_char.%{_num}%} to "p"
+				else if {_randInt} is 17:
+					set {_char.%{_num}%} to "q"
+				else if {_randInt} is 18:
+					set {_char.%{_num}%} to "r"
+				else if {_randInt} is 19:
+					set {_char.%{_num}%} to "s"
+				else if {_randInt} is 20:
+					set {_char.%{_num}%} to "t"
+				else if {_randInt} is 21:
+					set {_char.%{_num}%} to "u"
+				else if {_randInt} is 22:
+					set {_char.%{_num}%} to "v"
+				else if {_randInt} is 23:
+					set {_char.%{_num}%} to "w"
+				else if {_randInt} is 24:
+					set {_char.%{_num}%} to "x"
+				else if {_randInt} is 25:
+					set {_char.%{_num}%} to "y"
+				else if {_randInt} is 26:
+					set {_char.%{_num}%} to "z"
+				else if {_randInt} is 27:
+					set {_char.%{_num}%} to "A"
+				else if {_randInt} is 28:
+					set {_char.%{_num}%} to "B"
+				else if {_randInt} is 29:
+					set {_char.%{_num}%} to "C"
+				else if {_randInt} is 30:
+					set {_char.%{_num}%} to "D"
+				else if {_randInt} is 31:
+					set {_char.%{_num}%} to "E"
+				else if {_randInt} is 32:
+					set {_char.%{_num}%} to "F"
+				else if {_randInt} is 33:
+					set {_char.%{_num}%} to "G"
+				else if {_randInt} is 34:
+					set {_char.%{_num}%} to "H"
+				else if {_randInt} is 35:
+					set {_char.%{_num}%} to "I"
+				else if {_randInt} is 36:
+					set {_char.%{_num}%} to "J"
+				else if {_randInt} is 37:
+					set {_char.%{_num}%} to "K"
+				else if {_randInt} is 38:
+					set {_char.%{_num}%} to "L"
+				else if {_randInt} is 39:
+					set {_char.%{_num}%} to "M"
+				else if {_randInt} is 40:
+					set {_char.%{_num}%} to "N"
+				else if {_randInt} is 41:
+					set {_char.%{_num}%} to "O"
+				else if {_randInt} is 42:
+					set {_char.%{_num}%} to "P"
+				else if {_randInt} is 43:
+					set {_char.%{_num}%} to "Q"
+				else if {_randInt} is 44:
+					set {_char.%{_num}%} to "R"
+				else if {_randInt} is 45:
+					set {_char.%{_num}%} to "S"
+				else if {_randInt} is 46:
+					set {_char.%{_num}%} to "T"
+				else if {_randInt} is 47:
+					set {_char.%{_num}%} to "U"
+				else if {_randInt} is 48:
+					set {_char.%{_num}%} to "V"
+				else if {_randInt} is 49:
+					set {_char.%{_num}%} to "W"
+				else if {_randInt} is 50:
+					set {_char.%{_num}%} to "X"
+				else if {_randInt} is 51:
+					set {_char.%{_num}%} to "Y"
+				else if {_randInt} is 52:
+					set {_char.%{_num}%} to "Z"
+
+			loop {_length} times:
+				set {_message} to "%{_char.1}%%{_char.2}%%{_char.3}%%{_char.4}%%{_char.5}%%{_char.6}%%{_char.7}%%{_char.8}%%{_char.9}%%{_char.10}%%{_char.11}%%{_char.12}%%{_char.13}%%{_char.14}%%{_char.15}%%{_char.16}%%{_char.17}%%{_char.18}%%{_char.19}%%{_char.20}%%{_char.21}%%{_char.22}%%{_char.23}%%{_char.24}%%{_char.25}%"
+			replace all "<none>" with "" in {_message}
+			set {reaction.activeWord} to {_message}
+
+		console command "tellraw @a ["""",{""text"":""["",""color"":""dark_gray""},{""text"":""Reaction"",""color"":""yellow"",""bold"":true},{""text"":""]"",""color"":""dark_gray"",""bold"":false},{""text"":"" Hover for the word to type!"",""color"":""aqua"",""hoverEvent"":{""action"":""show_text"",""value"":{""text"":"""",""extra"":[{""text"":""%{reaction.activeWord}%""}]}}}]"
+
+
+	else if {reaction.type} is 1:
+
+		set {_length} to "%length of {reaction.activeWord}%" parsed as number
+		loop {_length} times:
+			set {_num} to loop-number
+			set {_char} to first {_num} characters of {reaction.activeWord}
+			set {_char::%{_num}%} to last character of {_char}
+		loop {_length} times:
+			set {_num} to loop-number
+			set {_letter.%{_num}%} to random element of {_char::*}
+			remove {_letter.%{_num}%} from {_char::*}
+		set {_message} to "%{_letter.1}%%{_letter.2}%%{_letter.3}%%{_letter.4}%%{_letter.5}%%{_letter.6}%%{_letter.7}%%{_letter.8}%%{_letter.9}%%{_letter.10}%%{_letter.11}%%{_letter.12}%%{_letter.13}%%{_letter.14}%%{_letter.15}%%{_letter.16}%%{_letter.17}%%{_letter.18}%%{_letter.19}%%{_letter.20}%%{_letter.21}%%{_letter.22}%%{_letter.23}%%{_letter.24}%%{_letter.25}%"
+		replace all "<none>" with "" in {_message}
+
+		console command "tellraw @a ["""",{""text"":""["",""color"":""dark_gray""},{""text"":""Reaction"",""color"":""yellow"",""bold"":true},{""text"":""]"",""color"":""dark_gray"",""bold"":false},{""text"":"" Hover for the word to unscramble!"",""color"":""aqua"",""hoverEvent"":{""action"":""show_text"",""value"":{""text"":"""",""extra"":[{""text"":""%{_message}%""}]}}}]"
+
+	set {reaction.win} to false
+	set {reaction.time} to now
+
+	wait {@timeout}
+	if {reaction.win} is false:
+		broadcast "&8[&e&lReaction&8] &f%{reaction.winner}% &cNobody got the word in time :("
+	set {reaction.chat} to false
+
+
+
+on chat:
+	{reaction.chat} is true
+	message is "%{reaction.activeWord}%"
+	cancel event
+	set {_reaction.timeWin} to now
+	set {_reaction.winner} to player
+	set {reaction.win} to true
+
+	if {reaction.type} is 0:
+		broadcast "&8[&e&lReaction&8] &f%{reaction.winner}% &atyped the word &f%{reaction.activeWord}% &ain &f%difference between {_reaction.timeWin} and {reaction.time}%&a!"
+	else if {reaction.type} is 1:
+		broadcast "&8[&e&lReaction&8] &f%{reaction.winner}% &aunscrambled the word &f%{reaction.activeWord}% &ain &f%difference between {_reaction.timeWin} and {reaction.time}%&a!"
+
+	#event for winner (use {_reaction.winner} to reward the player)
+	{@reward}
+
+
+on load:
+	broadcast "&eThe Chat Reaction Skript by &9BluePsychoRanger&e has been reloaded"
