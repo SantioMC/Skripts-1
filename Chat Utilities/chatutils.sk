@@ -1,7 +1,7 @@
 options:
-  maincolor = &3
-  servername = COOL SERVER
-  permissionprefix = chatutilities
+  maincolor: &3
+  servername: COOL SERVER
+  permissionprefix: chatutilities
 
 on chat:
   if {chatcolor::%player's uuid%} is set:
